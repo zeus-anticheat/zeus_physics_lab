@@ -761,7 +761,22 @@ public final class LabGenerator {
 
     private void buildNetwork(World world, int cx, int y, int z, Station station) {
         straightLane(world, cx, y, z, Material.LIGHT_BLUE_CONCRETE);
-        if (station.id().contains("TELEPORT")) {
+        if (station.id().equals("NW_TELEPORT_NETHER")) {
+            // Nether portal teleport using command block
+            placeCommand(world, cx - 2, y - 2, z + 10, "execute in minecraft:the_nether run tp @p ~ ~ ~");
+            Switch btn = (Switch) Bukkit.createBlockData(Material.STONE_BUTTON);
+            btn.setAttachedFace(FaceAttachable.AttachedFace.FLOOR);
+            ((Directional) btn).setFacing(BlockFace.NORTH);
+            world.setBlockData(cx - 2, y, z + 10, btn);
+            placeSign(world, cx - 2, y, z + 9, "Teleport to", "Nether");
+
+            // Build an actual nether portal frame nearby just in case
+            fill(world, cx, y, z + 15, cx, y + 3, z + 15, Material.OBSIDIAN);
+            fill(world, cx, y + 4, z + 15, cx + 3, y + 4, z + 15, Material.OBSIDIAN);
+            fill(world, cx + 3, y, z + 15, cx + 3, y + 3, z + 15, Material.OBSIDIAN);
+            fill(world, cx + 1, y - 1, z + 15, cx + 2, y - 1, z + 15, Material.OBSIDIAN);
+            fill(world, cx + 1, y, z + 15, cx + 2, y + 3, z + 15, Material.NETHER_PORTAL);
+        } else if (station.id().contains("TELEPORT")) {
             placeCommand(world, cx - 2, y - 2, z + 10, "tp @p ~ ~ ~6");
             Switch btn3 = (Switch) Bukkit.createBlockData(Material.STONE_BUTTON);
             btn3.setAttachedFace(FaceAttachable.AttachedFace.FLOOR);

@@ -145,6 +145,7 @@ public final class StationCatalog {
             "NW_BURST_ACTIONS:controlled rapid actions for legitimate bursts",
             "NW_CONTAINER_BURSTS:inventory burst station",
             "NW_TELEPORT_SEQUENCE:command-block teleports with confirmations",
+            "NW_TELEPORT_NETHER:nether dimension portal teleport",
             "NW_CHUNK_BOUNDARY:movement across chunk boundaries",
             "NW_TPS_STRESS_LIGHT:safe low-intensity redstone/entity activity",
             "NW_PING_BUCKETS:repeat key routes under latency profiles");
